@@ -6016,12 +6016,9 @@
   items, returns val and f is not called."
   {:added "1.0"}
   ([f coll]
-     (if-let [s (seq coll)]
-       (reduce f (first s) (next s))
-       (f)))
+    (clojure.core.protocols/internal-reduce coll f))
   ([f val coll]
-     (let [s (seq coll)]
-       (clojure.core.protocols/internal-reduce s f val))))
+    (clojure.core.protocols/internal-reduce coll f val)))
 
 (defn into
   "Returns a new coll consisting of to-coll with all of the items of
